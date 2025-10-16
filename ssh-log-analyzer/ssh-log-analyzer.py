@@ -11,7 +11,7 @@ from collections import Counter
 
 def parse_failed_attempts_journalctl():
     """
-    Parse les logs SSH via journalctl
+    Parse les logs SSH via journalctl (tous les logs systeme)
     Retourne un dict {ip: nombre_tentatives}
     """
     failed_ips = []
@@ -20,26 +20,16 @@ def parse_failed_attempts_journalctl():
     pattern = r'Failed password for .* from (\d+\.\d+\.\d+\.\d+)'
     
     try:
-        # Execute journalctl pour recuperer les logs SSH
+        # Execute journalctl pour recuperer TOUS les logs (pas juste service ssh)
         result = subprocess.run(
-            ['journalctl', '-u', 'ssh', '--no-pager'],
+            ['journalctl', '--since', '7 days ago', '--no-pager'],
             capture_output=True,
             text=True,
-            timeout=10
+            timeout=30
         )
         
-        # Si service ssh n'existe pas, essaie sshd
         if result.returncode != 0:
-            result = subprocess.run(
-                ['journalctl', '-u', 'sshd', '--no-pager'],
-                capture_output=True,
-                text=True,
-                timeout=10
-            )
-        
-        if result.returncode != 0:
-            print("[ERREUR] Impossible de lire les logs SSH")
-            print("Essayez : sudo journalctl -u ssh ou sudo journalctl -u sshd")
+            print("[ERREUR] Impossible de lire les logs")
             return {}
         
         # Parse les logs
@@ -56,7 +46,7 @@ def parse_failed_attempts_journalctl():
         print("[ERREUR] Permission refusee. Lance avec sudo")
         return {}
     except FileNotFoundError:
-        print("[ERREUR] journalctl introuvable. Systeme non compatible")
+        print("[ERREUR] journalctl introuvable")
         return {}
     
     return Counter(failed_ips)
@@ -74,8 +64,8 @@ def display_results(ip_counter, threshold=5):
         print("Aucune IP suspecte detectee")
         print(f"\nTotal tentatives echouees : {sum(ip_counter.values())}")
         if ip_counter:
-            print("\nTop 3 IPs (toutes tentatives) :")
-            for ip, count in sorted(ip_counter.items(), key=lambda x: x[1], reverse=True)[:3]:
+            print("\nTop 5 IPs (toutes tentatives) :")
+            for ip, count in sorted(ip_counter.items(), key=lambda x: x[1], reverse=True)[:5]:
                 print(f"  - {ip:15} : {count} tentatives")
         return
     
