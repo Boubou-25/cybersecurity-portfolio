@@ -1,15 +1,13 @@
-# Portfolio Cybersécurité
+# 🛡️ Portfolio Cybersécurité
 
-**Objectif :** Alternance/CDI Pentester ou Analyste SOC junior
+## 📊 Projets
 
-## Compétences
-- Python (scripting sécu)
-- Linux/Bash
-- Configuration serveurs (SSH, Nginx, Fail2Ban)- Root-Me en cours
+### 1. SSH Attack Dashboard ⭐ NEW
+Dashboard professionnel de monitoring d'attaques SSH en temps réel
+- **Repo :** [ssh-attack-dashboard](https://github.com/Boubou-25/ssh-attack-dashboard)
+- **Tech :** Flask, JavaScript, Chart.js, Bootstrap 5
+- **Features :** Géolocalisation, notifications, auto-ban, analytics
 
-## Projets
-*(À venir)*
+### 2. Network Scanner (à venir)
+### 3. Password Analyzer (à venir)
 
----
-📧 Contact : benjaminbouhier@proton.me  
-🔗 Root-Me : https://www.root-me.org/Boubouu
