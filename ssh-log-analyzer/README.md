@@ -139,7 +139,7 @@ Benjamin Bouhier - Candidat Pentester/Analyste SOC Junior
 
 📧 benjaminbouhier@proton.me  
  🔗 [Portfolio GitHub](https://github.com/Boubou-25/cybersecurity-portfolio)  
- 🏆 [Root-Me Profile](https://www.root-me.org/Boubou-25)
+ 🏆 [Root-Me Profile](https://www.root-me.org/Boubouu)
 
 ## Remerciements
 
