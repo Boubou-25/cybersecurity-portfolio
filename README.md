@@ -1,10 +1,11 @@
 # Portfolio Cybersécurité
 
+**Objectif :** Alternance/CDI Pentester ou Analyste SOC junior
 
 ## Compétences
 - Python (scripting sécu)
 - Linux/Bash
-- Root-Me (en cours)
+- Configuration serveurs (SSH, Nginx, Fail2Ban)- Root-Me en cours
 
 ## Projets
 *(À venir)*
